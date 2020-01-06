@@ -50,46 +50,22 @@ var questions= [
 //console.log(questions[0].question);
 //console.log(questions[0].answer);
 //console.log(questions[0].choices)
-//console.log(questions[0].answer)
 //console.log(questions[0].choices.length);
 
 
 
 //create variable for score of correct answers and wrong answers to be displayed 
 
-var userCorrect=0; // with strings means i'm going to add some kind of value later 
+var userCorrect=0; 
 var userIncorrect=0;
 var unanswered=0
 var userGuess;
-//var name =0 means i'm starting with starting and the number will go up or down 
-//var of null = can be similar to blank string in meaning we are going to add value later 
 
 //variable for timer 
 var timer=10;
 var intervalId; 
 var timerOn=false;
 var count=0;
-
-//create object or var? that holds messages so we can call it later: 
-    //show msg of Correct answers
-
-/* function correctAnswerMsg() {
-    var correctDiv= $("<div>");
-    correctDiv.addClass("msg-container");
-    $("#choices-container").append(correctDiv);
-    $(".msg-container").html( "<h1> "+ "_________" + "is correct!</h1>");
-};
-
-console.log(correctAnswerMsg());*/
-
-//function hideCorrectMsg() {
-    //$("#choices-container").hide()};
-//console.log(hideCorrectMsg());
-    //show that answer is wrong 
-    //show time is UP
-
-
- 
 
 
 //function to start game
@@ -143,6 +119,9 @@ $("span").unbind("click").on("click", function (){
    
     //console.log("clicked!");
 
+//if answered correctly
+//show a msg congratualing them
+//after a few secs, go on the next page automatically 
   if (userGuess === triviaAnswer) {
 
     var correctDiv = $("<div>");
@@ -154,6 +133,12 @@ $("span").unbind("click").on("click", function (){
     setTimeout(nextQuestion, 5000);
 
     }
+
+//if player taking too long to answer,
+// show msg of Times up 
+// display correct answer
+//go on the next page automatically
+
   else{
       //console.log("wrong");
     var wrongDiv = $("<div>");
@@ -181,7 +166,6 @@ function nextQuestion () {
 }
 
 
-
 //function to clear the timer 
 function clearTimer () {
     clearInterval(intervalId);
@@ -199,9 +183,6 @@ function restart () {
 
 
 //below here is how the game works or action of the game:
-
-//function for the selected answers w/ if statements of the game
-//call start game then go through the IF statements to determine outcome of user 
 //welcome page with on click button to start the game 
 
 
@@ -216,28 +197,7 @@ $("#start").on("click", function () {
     setTimeout(startGame,1000);
     setTime();
 
- 
 
-//shows answer right away if wrong or correct 
-/*if(userGuess = answer) {
-    alert("Correct! Good Job!");
-    }
-    else 
-    alert ("sorry wrong answer)"
-    then move on to next question
-    }
-//if answered correctly
-    //show a msg congratualing them
-    //after a few secs, go on the next page automatically 
-
-//if answered incorrectly
-    // show a msg saying it is wrong 
-    //after a few sec, go on to next page automattically 
-
-//if player taking too long to answer,
-    // show msg of Times up 
-    // display correct answer
-    //go on the next page automatically*/
 
 //display for last screen to show final results  and button to restart game 
 //at the final screen, show correct answer and incorrect answers
