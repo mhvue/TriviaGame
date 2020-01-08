@@ -17,9 +17,13 @@ h1 {
 #FriendsTitle {
     float: left;
     margin-left: 100px;
-}*/
+}
 
 /*put a border to see this div:
 #choices-container {
+    border: solid 2px black;
+}*/
+
+#timer {
     border: solid 2px black;
 }
