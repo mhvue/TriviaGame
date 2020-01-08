@@ -92,7 +92,6 @@ function startGame() {
 
 
 function setTime () { 
-    //clearInterval(intervalId);
     intervalId= setInterval(runTimer, 1000);
    
 }
@@ -106,12 +105,11 @@ function runTimer () {
 
     //show seconds are ticking DOWN and once hit 0: 
     if(timer === -1) { // -1 so it shows 0
-    
         //this is not working below:
-        //var timeDiv = $("<div>"); // create a new div to hold msg for times up
-        //timeDiv.addClass("time-container");
-        //$("#timer").append(timeDiv); //def need this!
-       // $(".time-container").html("<h1> "+ "Uh Oh.. Time ran out! </h1>")
+      var timeDiv = $("<div>"); // create a new div to hold msg for times up
+       timeDiv.addClass("time-container");
+       $("#timer").append(timeDiv); //def need this!
+       $(".time-container").html("<h1> "+ "Uh Oh.. Time ran out! </h1>");
    // alert("Time's Up!");
     clearTimer();
     nextQuestion();
@@ -133,13 +131,14 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
 
 //if answered correctly,show a msg congratualing them,after a few secs, go on the next page automatically 
   if (userGuess === triviaAnswer) {
-
+    $("span").children().hide();
     var correctDiv = $("<div>"); // create a new div to show correct answer to user
     correctDiv.addClass("msg-container");
-    $("#messages").append(correctDiv); //def need this!
+    $("#messages").html(correctDiv); //def need this!
     $(".msg-container").html("<h1> " + userGuess + " is correct!</h1>" + "<img src=' " + questions[count].picture + "' width='300px'>");
     clearTimer();
     setTimeout(nextQuestion,2000);
+   // $("span").hide();
     }
 
 //if player taking too long to answer, show msg of Times up, 
@@ -148,12 +147,12 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
 
   else{
       //console.log("wrong");
-    var wrongDiv = $("<div>"); //create new div to hold msg of incorrect to user
-    wrongDiv.addClass("wrongMsg-container");
-    $("#messages").append(wrongDiv); 
-    $(".wrongMsg-container").html("<h1><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img src=' " + questions[count].picture + "' width='300px'>");
-    clearTimer();
-    setTimeout(nextQuestion,2000);
+    //var wrongDiv = $("<div>"); //create new div to hold msg of incorrect to user
+   // wrongDiv.addClass("wrongMsg-container");
+   // $("#messages").append(wrongDiv); 
+   // $(".wrongMsg-container").html("<h1><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img src=' " + questions[count].picture + "' width='300px'>");
+    //clearTimer();
+   // setTimeout(nextQuestion,2000);
 }
 });
 }
@@ -163,13 +162,12 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
 function nextQuestion () {
     $(".msg-container").hide();//def need this to hide answer from previous question
     $(".wrongMsg-container").hide();
-    // $("span").show();//this is not working to show options again
+    $("#span").children().show();
     count++;
     timer=10;
     setTime(); //def need this here to questions to continue on to next 
     $("#timer").html("<h2> Time: " + timer + " seconds. </h2>");
-   //restart(); this OR startgame will keep game going 
-   startGame(); //this needs to stay down here for to work 
+    startGame(); //this needs to stay down here for to work 
 
 }
 
@@ -206,7 +204,7 @@ $("#start").on("click", function () {
     setTime();
 
 
-
+//End screen:
 //display for last screen to show final results  and button to restart game 
 //at the final screen, show correct answer and incorrect answers
  //at the final screen: offer to restart with click of button in which game would start automatically again 
