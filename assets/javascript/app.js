@@ -153,7 +153,7 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
     var wrongDiv = $("<div>"); //create new div to hold msg of incorrect to user
     wrongDiv.addClass("wrongMsg-container");
     $("#messages").append(wrongDiv); 
-    $(".wrongMsg-container").html("<h1> " + userGuess + " is incorrect! Correct answer is: " + triviaAnswer + " </h1>");
+    $(".wrongMsg-container").html("<h1><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img src=' " + questions[count].picture + "' width='300px'>");
      //setTimeout(nextQuestion, 5000);
       //with 5 sec, have a msg saying "wrong"
 }
