@@ -92,7 +92,7 @@ function startGame() {
 
 
 function setTime () { 
-    clearInterval(intervalId);
+    //clearInterval(intervalId);
     intervalId= setInterval(runTimer, 1000);
    
 }
@@ -125,11 +125,11 @@ function userAnswers() {
 $("span").unbind("click").on("click", function (){ //had to unbind b/c another click event was making answers increment per question
     userGuess=$(this).children().val();
     //console.log(userGuess);
- 
-    var triviaAnswer= questions[count].answer;
-    console.log(triviaAnswer); 
-   
     //console.log("clicked!");
+
+    var triviaAnswer= questions[count].answer;
+   // console.log(triviaAnswer); 
+  
 
 //if answered correctly,show a msg congratualing them,after a few secs, go on the next page automatically 
   if (userGuess === triviaAnswer) {
@@ -138,10 +138,8 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
     correctDiv.addClass("msg-container");
     $("#messages").append(correctDiv); //def need this!
     $(".msg-container").html("<h1> " + userGuess + " is correct!</h1>" + "<img src=' " + questions[count].picture + "' width='300px'>");
-
-   // setTimeout(setTime(), 3000);  this  stop the game after 2nd question 
-    //setTimeout(nextQuestion, 5000);
-
+    clearTimer();
+    setTimeout(nextQuestion,2000);
     }
 
 //if player taking too long to answer, show msg of Times up, 
@@ -154,8 +152,8 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
     wrongDiv.addClass("wrongMsg-container");
     $("#messages").append(wrongDiv); 
     $(".wrongMsg-container").html("<h1><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img src=' " + questions[count].picture + "' width='300px'>");
-     //setTimeout(nextQuestion, 5000);
-      //with 5 sec, have a msg saying "wrong"
+    clearTimer();
+    setTimeout(nextQuestion,2000);
 }
 });
 }
