@@ -1,8 +1,11 @@
 body {
-    background-color:
+    background-color: black;
+    color: yellow;
+    margin: 0 auto; 
+    box-sizing: border-box;
 }
 
-/*img{
+img{
     display:block;
     margin-left: auto;
     margin-right: auto;
@@ -10,20 +13,77 @@ body {
 }
 
 h1 {
-    color: black;
-    text-align: left;
-    margin-bottom: 200px;
-}
-#FriendsTitle {
-    float: left;
-    margin-left: 100px;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    margin-left: 46%;
+    margin-top: 100px;
+    font-family: 'Libre Baskerville', serif;
+    letter-spacing: 5px;
+    
 }
 
-/*put a border to see this div:
+#button-div {
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+button{
+    padding: 15px;
+    background-color: white;
+    font-weight: bold;
+    width: 200px;
+    position: absolute;
+    margin-top: 150px;
+  
+}
+#scoreboard {
+    border: solid 2px black;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#timer, #question, #choices-container, #messages{
+    margin: 0 auto;
+    text-align: center;
+}
+
+#timer, #question, #choices-container {
+    background-color: #8458a7;
+    padding: 5px;
+    width: 800px;
+    margin-top: 120px;
+}
+
+#timer, #question {
+    margin: 0px;
+    position: relative;
+    margin-left: 400px;
+    top: 250px;
+}
+
 #choices-container {
-    border: solid 2px black;
-}*/
-
-#timer {
-    border: solid 2px black;
+    position: relative;
+    top: 130px;
+    margin-left: 400px;
 }
+
+#container {
+    box-sizing: border-box;
+}
+
+#headerLogo {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 35%;
+    z-index: -1;
+    
+}
+
+#yellowFrame {
+    margin-top: 130px;
+}
+

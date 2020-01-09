@@ -7,7 +7,7 @@ var questions= [
       picture: "assets/images/Emily.png",
     },
 
-    { question: "Monica asked Phoebe for a haircut. Who did Monica wanted it look like? ",
+    { question: "Monica asked Phoebe for a haircut. Who did Monica wanted it look like?",
       choices: ["Rachel Green", "Dudley Moore", "Demi Moore", "Shirley Moore"],
       answer: "Demi Moore",
       picture: "assets/images/DemiMoore.jpg",
@@ -27,7 +27,7 @@ var questions= [
       picture: "assets/images/Phoebe.tranquilizer.jpg",
     },
 
-    { question: "Joey dated someone that Chandeler fell in love with. Who is she?",
+    { question: "Joey dated someone that Chandeler fell in love with. Who was she?",
       choices: ["Rachel", "Kathy", "Katie", "Kristen"],
       answer: "Kathy",
       picture: "assets/images/Kathy.jpg",
@@ -39,13 +39,13 @@ var questions= [
       picture: "assets/images/Bloomingdales.jpg",
     },
 
-    { question: "Which Friend had an on and off addiction to smoking?",
+    { question: "Which Friend character struggled with on and off addiction to smoking?",
       choices: ["Monica", "Ross", "Chandler", "Phoebe"],
       answer: "Chandler",
       picture: "assets/images/Chandler.smoking.jpg",
     },
 
-    { question: "What did Monica make when she was trying to get over Richard?",
+    { question: "What did Monica make to get over Richard?",
       choices: ["Lasagna", "Jam", "Cookies", "Soup"],
       answer: "Jam",
       picture: "assets/images/Jam.jpg",
@@ -59,7 +59,7 @@ var questions= [
 //console.log(questions[0].question);
 //console.log(questions[0].answer);
 //console.log(questions[0].choices)
-//console.log(questions[0].choices.length);
+console.log(questions.length);
 
 
 
@@ -67,11 +67,11 @@ var questions= [
 
 var userCorrect=0; 
 var userIncorrect=0;
-var unanswered=0
+var unAnswered=0
 var userGuess;
 
 //variable for timer 
-var timer=11;
+var timer=6;
 var intervalId; 
 var timerOn=false;
 var count=0;
@@ -87,51 +87,61 @@ function startGame() {
 
    userAnswers();
 
+   //$("#scoreboard").hide();
+
 };
-//startGame();
+//startGame(); testing out this function by calling it
 
 
+//this function lets the time "tick" 
 function setTime () { 
     intervalId= setInterval(runTimer, 1000);
    
-}
+};
 
 
     
-//function to run the timer
+//function to run the timer so it goes down (hence --)
 function runTimer () {
     timer--;
     $("#timer").html("<h2> Time: " + timer + " seconds. </h2>");
     
-  //need this IF here b/c need to know when timer = 0 on what to do..
-    if(timer === 0) { 
-    $("#question").hide();
-   $("span").children().hide();
+//need this IF here b/c need to know when timer = 0 on what to do..
+//if player taking too long to answer, show msg of Times up, 
+//display correct answer
+//go on the next page automatically
+    if(timer === -1) { 
+      unAnswered++;
+      $("#question").hide();
+      $("span").children().hide();
   
-     var timeDiv = $("<div>"); // create a new div to hold msg for times up
-     timeDiv.addClass("time-container");
-     $("#timer").html(timeDiv); //def need this!
-    $(".time-container").html("<h1> "+ "Uh Oh.. Time ran out! Answer is:" + questions[count].answer + "</h1>");
-    clearTimer();
-    setTimeout(nextQuestion,3000);
-    
+      var timeDiv = $("<div>"); // create a new div to hold msg for times up
+      timeDiv.addClass("time-container");
+      $("#timer").html(timeDiv); //def need this!
+      $(".time-container").html("<h1> "+ "Uh Oh.. Time ran out! Answer is:" + questions[count].answer + "</h1>" + "<img src=' " + questions[count].picture + "' width='300px'>");
+      clearTimer();
+      setTimeout(nextQuestion,3000);
+      
+     
     }
 
-} 
+    //console.log(unAnswered);
+};
+
 
 //collect user's guess 
 function userAnswers() {
-$("span").unbind("click").on("click", function (){ //had to unbind b/c another click event was making answers increment per question
+  $("span").unbind("click").on("click", function (){ //had to unbind b/c another click event was making answers increment per question
     userGuess=$(this).children().val();
     //console.log(userGuess);
     //console.log("clicked!");
 
     var triviaAnswer= questions[count].answer;
    // console.log(triviaAnswer); 
-  
 
-//if answered correctly,show a msg congratualing them,after a few secs, go on the next page automatically 
+//if answered correctly,show a msg of correct, after a few secs, go on the next page automatically 
   if (userGuess === triviaAnswer) {
+    userCorrect++;
     $("span").children().hide();
     var correctDiv = $("<div>"); // create a new div to show correct answer to user
     correctDiv.addClass("msg-container");
@@ -140,14 +150,11 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
     clearTimer();
     setTimeout(nextQuestion,3000);
     }
-
-
-//if player taking too long to answer, show msg of Times up, 
-//display correct answer
-//go on the next page automaticall
-
+  
+//if answered incorrectly, showed msg of incorrect and include answer the go on next question
   else{
       //console.log("wrong");
+    userIncorrect++;
     $("span").children().hide();
     var wrongDiv = $("<div>"); //create new div to hold msg of incorrect to user
     wrongDiv.addClass("wrongMsg-container");
@@ -155,38 +162,71 @@ $("span").unbind("click").on("click", function (){ //had to unbind b/c another c
     $(".wrongMsg-container").html("<h1><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img src=' " + questions[count].picture + "' width='300px'>");
     clearTimer();
     setTimeout(nextQuestion,3000);
-}
+  }
+
+  //console.log(userCorrect);
+  //console.log(userIncorrect);
 });
 }
-//userAnswers();
+
+//userAnswers(); testing out this function by calling it
 
 //function to go through each question 
 function nextQuestion () {
-    $(".msg-container").hide();//def need this to hide answer from previous question
+    $(".msg-container").hide();
     $(".wrongMsg-container").hide();
     $("#span").children().show();
     $("#question").show();
     count++;
-    timer=10;
-    setTime(); //def need this here to questions to continue on to next 
+    timer=5;
+    setTime(); //def need this here for questions to continue on to next 
     $("#timer").html("<h2> Time: " + timer + " seconds. </h2>");
-    startGame(); //this needs to stay down here for to work 
+    startGame(); //this needs to stay down (last) for it to work 
 
-}
+    if (count === questions.length-1) {
+      console.log("End");
+      clearTimer();
+      endScreen();
+      setTimeout(restart, 2000);
+    };
+};
 
 
 //function to clear the timer 
 function clearTimer () {
     clearInterval(intervalId);
     //once answer is clicked (rather wrong or correct,we need to reset timer)
-}
+};
 
 //function restart game 
 function restart () {
+  $("#choices-container").hide();
+ $("#question").hide();
+ $("#timer").hide();
+
+  $("#start").show(); //show button again and if click on start game
+  $("#start").on("click", function (){
+    //hide start button
+    $("#start").hide();
     startGame();
+    count=0;
+    timer=6;
     $("#timer").html("<h2> Time: " + timer + " seconds. </h2>");
+   // setTime();
+   // runTimer();
+ 
+  });
 }
 
+function endScreen () {
+  $("#scoreboard").html("<h1> Correct: " + userCorrect + "<br>" + "Incorrect: " + userIncorrect + "<br>"+ "Unanswered: " + unAnswered + "<br> Want to play again? If Yes, press Start! </h1>"); 
+
+}
+//console.log(endScreen());
+//End screen:
+
+//at the final screen, show correct answer and incorrect answers
+ //at the final screen: offer to restart with click of button in which game would start automatically again 
 
 
 
@@ -196,22 +236,20 @@ function restart () {
 
 
 $(document).ready(function () {
-    $("#choices").hide();
+  $("#choices-container").hide();
+
     
 $("#start").on("click", function () {
+  console.log("click");
     //hide start button
     $("#start").hide();
-    
-
+   $("#yellowFrame").fadeOut("slow");
+  // $("#headerLogo", "<h1>").hide();
     setTimeout(startGame,1000);
     setTime();
-
-
-//End screen:
-//display for last screen to show final results  and button to restart game 
-//at the final screen, show correct answer and incorrect answers
- //at the final screen: offer to restart with click of button in which game would start automatically again 
+    
+});
 
 
 
-})});
+});
