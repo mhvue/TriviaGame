@@ -79,24 +79,23 @@ var count=0;
 
 //function to start game
 function startGame() {
-    $("#question").html("<h2>" + questions[count].question + " </h2>");
-    $("#choices-container").show();
+   
+    $("#question").html("<h2>" + questions[count].question + " </h2>").show();
     for (var i = 0; i < questions[count].choices.length; i++) {
         $("#choice" + i).html("<input type='submit' value='" + questions[count].choices[i] + "'> ");
      };
-
+  $("#choices-container").show();
    userAnswers();
 
-   //$("#scoreboard").hide();
+
 
 };
 //startGame(); testing out this function by calling it
 
 
-//this function lets the time "tick" 
+//this function lets the time goes down
 function setTime () { 
     intervalId= setInterval(runTimer, 1000);
-   
 };
 
 
@@ -118,7 +117,7 @@ function runTimer () {
       var timeDiv = $("<div>"); // create a new div to hold msg for times up
       timeDiv.addClass("time-container");
       $("#timer").html(timeDiv); //def need this!
-      $(".time-container").html("<h1> "+ "Uh Oh.. Time ran out! Answer is:" + questions[count].answer + "</h1>" + "<img src=' " + questions[count].picture + "' width='300px'>");
+      $(".time-container").html("<h1 class='textUpdates'>  Uh Oh..Time ran out! <br>" + "Answer is: " + questions[count].answer + "</h1>"+ "<img src=' " + questions[count].picture + "' width='300px' > ");
       clearTimer();
       setTimeout(nextQuestion,3000);
       
@@ -146,7 +145,7 @@ function userAnswers() {
     var correctDiv = $("<div>"); // create a new div to show correct answer to user
     correctDiv.addClass("msg-container");
     $("#messages").html(correctDiv); //def need this!
-    $(".msg-container").html("<h1> " + userGuess + " is correct!</h1>" + "<img src=' " + questions[count].picture + "' width='300px'>");
+    $(".msg-container").html("<h1 class ='answerHeader'> " + userGuess + " is correct!</h1>" + "<img src=' " + questions[count].picture + "' width='300px'>");
     clearTimer();
     setTimeout(nextQuestion,3000);
     }
@@ -159,7 +158,7 @@ function userAnswers() {
     var wrongDiv = $("<div>"); //create new div to hold msg of incorrect to user
     wrongDiv.addClass("wrongMsg-container");
     $("#messages").append(wrongDiv); 
-    $(".wrongMsg-container").html("<h1><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img src=' " + questions[count].picture + "' width='300px'>");
+    $(".wrongMsg-container").html("<h1 class='answerHeader'><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img src=' " + questions[count].picture + "' width='300px'>");
     clearTimer();
     setTimeout(nextQuestion,3000);
   }
@@ -179,15 +178,16 @@ function nextQuestion () {
     $("#question").show();
     count++;
     timer=5;
-    setTime(); //def need this here for questions to continue on to next 
-    $("#timer").html("<h2> Time: " + timer + " seconds. </h2>");
-    startGame(); //this needs to stay down (last) for it to work 
 
-    if (count === questions.length-1) {
+    if (count === questions.length) {
       console.log("End");
       clearTimer();
       endScreen();
-      setTimeout(restart, 2000);
+      restart();
+    }else{
+      setTime(); //def need this here for questions to continue on to next 
+      $("#timer").html("<h2> Time: " + timer + " seconds. </h2>");
+      startGame(); //this needs to stay down (last) for it to work 
     };
 };
 
@@ -206,19 +206,22 @@ function restart () {
 
   $("#start").show(); //show button again and if click on start game
   $("#start").on("click", function (){
+    count=0;
+    startGame();
     //hide start button
     $("#start").hide();
-    startGame();
-    count=0;
+  
     timer=6;
     $("#timer").html("<h2> Time: " + timer + " seconds. </h2>");
-   // setTime();
-   // runTimer();
+   
+    
+    
  
   });
 }
 
 function endScreen () {
+  timerOn=true;
   $("#scoreboard").html("<h1> Correct: " + userCorrect + "<br>" + "Incorrect: " + userIncorrect + "<br>"+ "Unanswered: " + unAnswered + "<br> Want to play again? If Yes, press Start! </h1>"); 
 
 }
@@ -236,15 +239,15 @@ function endScreen () {
 
 
 $(document).ready(function () {
-  $("#choices-container").hide();
+  $("#choices-container, #question, #timer").hide();
 
     
-$("#start").on("click", function () {
+$("#start").one("click", function () {
   console.log("click");
     //hide start button
     $("#start").hide();
    $("#yellowFrame").fadeOut("slow");
-  // $("#headerLogo", "<h1>").hide();
+   $("#choices-container, #question, #timer").show();
     setTimeout(startGame,1000);
     setTime();
     
