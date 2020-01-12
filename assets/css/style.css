@@ -3,6 +3,7 @@ body {
     color: yellow;
     margin: 0 auto; 
     box-sizing: border-box;
+    font-family: 'Libre Baskerville', serif;
    
 }
 
@@ -108,17 +109,12 @@ input:hover {
 #headerLogo {
     margin-left: auto;
     margin-right: auto;
+    width: 500px;
 }
 
 
 .time-container {
-    /*position: relative;*/
     margin-top:10px;
-    border: 2px solid yellow;
-    
-    /*background-color: #c34a0e;
-    /*max-height: 100%;*/
-    /*padding: 5px;*/
 }
     
 
@@ -130,6 +126,7 @@ input:hover {
     max-height:100%;
     margin-left: 35%;
     margin-top: 28%;
+    color: #8458a7;
 }
 
 .answerImg {
@@ -139,17 +136,21 @@ input:hover {
 
 #timeUpImg {
     position: absolute;
-    margin-left:90px;
+    margin-left:70px;
+    margin-top: 20px;
+    border: 10px solid yellow;
+    width: 400px;
+
 
 }
 
-#timeOutText{
+#timeUpHeader{
     color: black;
     font-weight: bold;
     margin-top: 5px;
 }
 
-#timeOutAnswerText{
+#timeUpAnswerText{
     color: yellow;
 }
 
@@ -172,7 +173,7 @@ input:hover {
 }
 
 #logoPic{
-    width: 400px;
+    width: 390px;
     position: absolute;
     /*z-index: -2;*/
     margin-left: 1120px;

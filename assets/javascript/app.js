@@ -54,7 +54,7 @@ var questions= [
 ];
 
 
-//testing on checking nested objects in array  
+// checking nested objects in array  
 //var count =0;
 //console.log(questions[0].question);
 //console.log(questions[0].answer);
@@ -63,21 +63,20 @@ var questions= [
 
 
 
-//create variable for score of correct answers and wrong answers to be displayed 
-
+//variable for correct, incorrect, unaswered, and user's guess 
 var userCorrect=0; 
 var userIncorrect=0;
 var unAnswered=0
 var userGuess;
 
 //variable for timer 
-var timer=6;
+var timer=26;
 var intervalId; 
 var timerOn=false;
 var count=0;
 
 
-//list of Functions here: 
+//Functions: 
 
 //function to start game
 function startGame() {
@@ -93,29 +92,28 @@ function startGame() {
   $("#choices-container, #timer").show();
 };
 
-//this function lets the time actually go down
+//this function lets the time actually go down per sec 
 function setTime () { 
     intervalId= setInterval(runTimer, 1000);
 };
 
-//function to run the timer so it goes down 
+//function to run the timer
 function runTimer () {
     timer--;
-    $("#timer").html("<h1> Time: " + timer + " seconds. </h1>");
+    $("#timer").html("<h1 class='timeHeader'> Time: " + timer + " seconds. </h1>");
     
-//need this IF here b/c need to know when timer = 0
+//need this IF here b/c need to know what to do when timer = 0
     if(timer === -1) { 
       unAnswered++;
       $("#question, #choices-container").hide();
-     // $("#question").hide();
       $("span").children().hide();
       
       var timeDiv = $("<div>"); // create a new div to hold msg for when times =0
       timeDiv.addClass("time-container");
       $("#timer").html(timeDiv); 
-      $(".time-container").html("<h1 id='timeOutText'>  Uh Oh..Time ran out! <br></h1>" + "<h1 id= 'timeOutAnswerText'>Answer is: " + questions[count].answer + "</h1>"+ "<img id='timeUpImg' src=' " + questions[count].picture + "' width='300px' > ");
+      $(".time-container").html("<h1 id='timeUpHeader'>  Uh Oh..Time ran out! <br></h1>" + "<h1 id= 'timeUpAnswerText'>Answer is: " + questions[count].answer + "</h1>"+ "<img id='timeUpImg' src=' " + questions[count].picture + "' width='300px' > ");
       clearTimer();
-      setTimeout(nextQuestion,3000);
+      setTimeout(nextQuestion,4000);
     }
 };
 
@@ -137,9 +135,9 @@ function userAnswers() {
     var correctDiv = $("<div>"); // create a new div to show correct answer to user
     correctDiv.addClass("msg-container");
     $("#messages").html(correctDiv);
-    $(".msg-container").html("<h1 class ='answerHeader'> " + userGuess + " is correct!</h1>" + "<img class='answerImg' src=' " + questions[count].picture + "' width='300px'>");
+    $(".msg-container").html("<h1 class ='answerHeader'> " + userGuess + " is correct!</h1>" + "<img class='answerImg' src=' " + questions[count].picture + "'>");
     clearTimer();
-    setTimeout(nextQuestion,3000);
+    setTimeout(nextQuestion,4000);
     }
   
 //if answered incorrectly, showed msg of incorrect and include answer the go on next question
@@ -150,9 +148,9 @@ function userAnswers() {
     var wrongDiv = $("<div>"); //create new div to hold msg of incorrect to user
     wrongDiv.addClass("wrongMsg-container");
     $("#messages").append(wrongDiv); 
-    $(".wrongMsg-container").html("<h1 class='answerHeader'><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img class='answerImg' src=' " + questions[count].picture + "' width='300px'>");
+    $(".wrongMsg-container").html("<h1 class='answerHeader'><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img class='answerImg' src=' " + questions[count].picture + "'>");
     clearTimer(); 
-    setTimeout(nextQuestion,3000);
+    setTimeout(nextQuestion,4000);
   }
   //console.log(userCorrect);
   //console.log(userIncorrect);
@@ -166,7 +164,7 @@ function nextQuestion () {
     $("#span").children().show();
     $("#question, #timer").show();
     count++;
-    timer=5;
+    timer=25;
 
     if (count === questions.length) {
       clearTimer();
@@ -175,7 +173,7 @@ function nextQuestion () {
     }
     else{
       setTime(); //def need this here for questions to continue on to next 
-      $("#timer").html("<h2 class='timeHeader'> Time: " + timer + " seconds. </h2>");
+      $("#timer").html("<h1 class='timeHeader'> Time: " + timer + " seconds. </h2>");
       startGame(); //this needs to stay down (last) for it to work 
     };
 };
@@ -193,16 +191,15 @@ function restart () {
   $("#startButton").on("click", function () {
     $("#scoreboard").hide();
     $("#startButton").hide();
-    timer=5;
+    timer=25;
     setTime();
-    $("#timer").html("<h2 class='timeHeader'> Time: " + timer + " seconds. </h2>");
-    //$("#friendsThemeSong")[0].pause(); //not working
-   // $("#friendsThemeSong")[0].currentTime =0; //obtained from Medium.com about adding audio
- 
+    $("#timer").html("<h1 class='timeHeader'> Time: " + timer + " seconds. </h2>");
+    //$("#friendsThemeSong")[0].currentTime=0; //obtained from Medium.com about adding audio but not working 
+    $("#friendsThemeSong")[0].play(); 
 
-  count=0;
-  startGame(); //try to use setTimeout again
-});
+    count=0;
+    startGame(); 
+  });
   userCorrect = 0;
   userIncorrect = 0;
   unAnswered = 0;
@@ -211,10 +208,8 @@ function restart () {
 function endScreen () {
   timerOn=false;
   $("#choices-container, #question, #timer").hide();
-  console.log("trying to hide");
-  $("#scoreboard").html("<h1 id='endText'> <u>Results: </u> <br><br> Correct: " + userCorrect + "<br>" + "Incorrect: " + userIncorrect + "<br>"+ "Unanswered: " + unAnswered + "<br> Press Start to play again! </h1>");
- 
-  //$("#friendsThemeSong")[0].pause();
+  $("#scoreboard").html("<h1 id='endText'> <u>Results: </u> <br><br> Correct: " + userCorrect + "<br>" + "Incorrect: " + userIncorrect + "<br>"+ "Unanswered: " + unAnswered + "<br> Press Start to play again! </h1>").show();
+  $("#friendsThemeSong")[0].pause();
 };
 
 
@@ -229,7 +224,7 @@ $("#startButton").one("click", function () {// .one for so click is not "adding"
   //console.log("click");
   //hide start button
   $("#startButton").hide();
-  //$("#friendsThemeSong")[0].play(); comment out while fixing page
+  $("#friendsThemeSong")[0].play();
   $("#yellowFrame").fadeOut("slow");
   setTimeout(startGame, 1000);
   setTime();
