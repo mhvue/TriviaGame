@@ -69,7 +69,7 @@ var unAnswered=0
 var userGuess;
 
 //variable for timer 
-var timer=26;
+var timer=31;
 var intervalId; 
 var timerOn=false;
 var count=0;
@@ -163,7 +163,7 @@ function nextQuestion () {
     $("#span").children().show();
     $("#question, #timer").show();
     count++;
-    timer=25;
+    timer=30;
 
     if (count === questions.length) {
       clearTimer();
@@ -190,7 +190,7 @@ function restart () {
   $("#startButton").on("click", function () {
     $("#scoreboard").hide();
     $("#startButton").hide();
-    timer=25;
+    timer=30;
     setTime();
     $("#timer").html("<h1 class='timeHeader'> Time: " + timer + " seconds. </h2>");
     //$("#friendsThemeSong")[0].currentTime=0; //obtained from Medium.com about adding audio but not working 
@@ -212,8 +212,7 @@ function endScreen () {
 };
 
 
-//below here is how the game works or action of the game:
-//welcome page with on click button to start the game 
+//click button to start the game 
 
 $(document).ready(function () {
   $("#choices-container, #question, #timer").hide();
@@ -229,7 +228,5 @@ $("#startButton").one("click", function () {// .one for so click is not "adding"
   setTime();
 
 });
-
-
 
 });
