@@ -146,7 +146,7 @@ function userAnswers() {
     $("#question, #choices-container, #timer").hide();
     var wrongDiv = $("<div>"); //create new div to hold msg of incorrect to user
     wrongDiv.addClass("wrongMsg-container");
-    $("#messages").append(wrongDiv); 
+    $("#messages").html(wrongDiv); 
     $(".wrongMsg-container").html("<h1 class='answerHeader'><i> " + userGuess + " is incorrect!</i> Correct answer is: " + triviaAnswer + " </h1> <img class='answerImg' src=' " + questions[count].picture + "'>");
     clearTimer(); 
     setTimeout(nextQuestion,4000);
