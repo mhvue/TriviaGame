@@ -1,5 +1,4 @@
-
-//create array to hold questions and correct answers: 
+//create array to hold questions, options, and answers: 
 var questions= [
     { question: "Who was Ross's second wife?",
       choices: ["Rachel", "Monica", "Carol", "Emily"],
@@ -54,7 +53,7 @@ var questions= [
 ];
 
 
-// checking nested objects in array  
+//checking nested objects in array  
 //var count =0;
 //console.log(questions[0].question);
 //console.log(questions[0].answer);

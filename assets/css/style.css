@@ -36,7 +36,6 @@ h1 {
 
 
 #button-div {
-    /*margin: 0 auto;*/
     text-align: center;
     width: 200px;
     padding: 5px;
@@ -52,8 +51,6 @@ button{
     position: absolute;
     z-index: 2;
     transition: 0.3s;
-    
-    
 }
 
 #startButton:hover {
@@ -83,7 +80,7 @@ input:hover {
 
 #timer, #question, #choices-container {
     background-color: #8458a7;
-    padding: 5px;
+    padding: 3px;
     width: 600px;
     /*border: 2px solid white;*/
 }
@@ -94,6 +91,7 @@ input:hover {
     margin-left: 480px;
     top: 250px;
     max-width: 100%;
+    font-size: 13px;
     
 }
 
@@ -157,7 +155,6 @@ input:hover {
 #endPic{
     width: 380px;
     position: absolute;
-    /*z-index: -2;*/
     margin-top:30px;
     margin-left: 30px;
     transform: rotate(10deg);
@@ -166,7 +163,6 @@ input:hover {
 #couchPic {
     width: 400px;
     position: absolute;
-    /*z-index: -2;*/
     margin-top: 300px;
     margin-left: 30px;
     transform: rotate(-10deg);
@@ -175,16 +171,13 @@ input:hover {
 #logoPic{
     width: 390px;
     position: absolute;
-    /*z-index: -2;*/
     margin-left: 1120px;
-    /*margin-top: 20px;*/
     transform: rotate(-5deg);
 }
 
 #MonTurkeyPic {
     width: 400px;
     position: absolute;
-    /*z-index: -2;*/
     margin-left: 1120px;
     margin-top: 300px;
     transform: rotate(20deg);
@@ -195,5 +188,92 @@ input:hover {
     margin-top: -30px;
 }
 
+/*Media Queries - only got 980px and didn't get a chance to do 768px and 640px*/ 
 
+@media screen and (max-width: 980px) {
+    body{
+        width: 100%;
+    }
+  
+    #yellowFrame {
+        width: 370px;
+    }
+
+    
+    #button-div {
+        margin-left: 270px;
+    }
+    
+    button{
+        padding: 10px;    
+    }
+
+    #endPic{
+        width: 25%;
+        z-index: -2;
+        margin-top:30px;
+        margin-left: 30px;
+    }
+    
+    #couchPic {
+        width: 25%;
+        z-index: -2;
+        margin-top: 220px;
+        margin-left: 30px;
+    }
+    
+    #logoPic{
+        width: 25%;
+        z-index: -2;
+        margin-left: 680px;
+        margin-top: 30px;
+    }
+    
+    #MonTurkeyPic {
+        width: 25%;
+        z-index: -2;
+        margin-left: 680px;
+        margin-top: 220px;
+        
+        
+    }
+    #endText {
+        font-size: 25px;
+        margin-top: 60px;
+    }
+
+    
+    #timer, #question, #choices-container {
+        padding: 5px;
+        width: 400px;
+        margin: 0 auto;
+    }
+    
+    #timer, #question {
+        margin: 0 auto;
+    }
+    
+    #choices-container {
+        top: 130px;
+        margin: 0 auto;
+    }
+
+    input{
+        width: 150px;
+        padding: 5px;
+        font-size: 15px;
+    }
+
+    
+    #timeUpImg {
+        margin-left:60px;
+        margin-top: 20px;
+        width: 300px;
+    }
+    
+    .answerHeader {
+        font-size: 25px;
+    }
+
+}
 
