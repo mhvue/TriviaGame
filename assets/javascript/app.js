@@ -6,7 +6,7 @@ var questions= [
       picture: "assets/images/Emily.png",
     },
 
-    { question: "Monica asked Phoebe for a haircut. Who did Monica wanted it look like?",
+    { question: "Monica asked Phoebe for a haircut. Who did Monica wanted to look like?",
       choices: ["Rachel Green", "Dudley Moore", "Demi Moore", "Shirley Moore"],
       answer: "Demi Moore",
       picture: "assets/images/DemiMoore.jpg",
@@ -20,7 +20,7 @@ var questions= [
     
     },
 
-    { question: "Which character got hit by a tranquilizer dart?",
+    { question: "Which Friend character got hit by a tranquilizer dart?",
       choices: ["Rachel", "Monica", "Ross", "Phoebe"],
       answer: "Phoebe",
       picture: "assets/images/Phoebe.tranquilizer.jpg",
