@@ -3,6 +3,7 @@ body {
     color: yellow;
     margin: 0 auto; 
     box-sizing: border-box;
+   
 }
 
 img{
@@ -10,14 +11,27 @@ img{
     margin-left: auto;
     margin-right: auto;
     width: 30%;
+    
 }
 
 h1 {
     text-align: center;
     font-family: 'Libre Baskerville', serif;
     letter-spacing: 5px; 
+    margin-top:-10px;
 }
 
+#endText{
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    letter-spacing: 5px; 
+    margin-top:100px;
+
+}
+
+.timeHeader {
+    margin-top:40px;
+}
 
 
 #button-div {
@@ -36,11 +50,27 @@ button{
     width: 200px;
     position: absolute;
     z-index: 2;
-    margin-top: 160px;
+    transition: 0.3s;
+    
+    
+}
+
+#startButton:hover {
+    /*background-color: #8458a7;*/
+    font-size: 20px;
+}
+
+input{
+    width: 400px;
+    padding: 10px;
+    font-size: 20px;
+}
+input:hover {
+    font-size: 25px;
+    opacity: .5;
 }
   
 #scoreboard {
-    border: solid 2px black;
     margin: 0 auto;
     text-align: center;
 }
@@ -53,20 +83,22 @@ button{
 #timer, #question, #choices-container {
     background-color: #8458a7;
     padding: 5px;
-    width: 800px;
-    border: 2px solid white;
+    width: 600px;
+    /*border: 2px solid white;*/
 }
 
 #timer, #question {
     margin: 0px;
-    margin-left: 400px;
+   /* margin-left: 400px;*/
+    margin-left: 480px;
     top: 250px;
+    max-width: 100%;
     
 }
 
 #choices-container {
     top: 130px;
-    margin-left: 400px;
+    margin-left: 480px;
 }
 
 #container {
@@ -80,16 +112,87 @@ button{
 
 
 .time-container {
-    position: relative;
-    margin-left: -400px;
+    /*position: relative;*/
+    margin-top:10px;
+    border: 2px solid yellow;
     
+    /*background-color: #c34a0e;
+    /*max-height: 100%;*/
+    /*padding: 5px;*/
 }
+    
+
 
 .answerHeader {
     position: absolute;
     z-index: 1;
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 10px;
+    width: 30%;
+    max-height:100%;
+    margin-left: 35%;
+    margin-top: 28%;
 }
+
+.answerImg {
+    border: 10px solid #8458a7;
+    height: auto;
+}
+
+#timeUpImg {
+    position: absolute;
+    margin-left:90px;
+
+}
+
+#timeOutText{
+    color: black;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#timeOutAnswerText{
+    color: yellow;
+}
+
+#endPic{
+    width: 380px;
+    position: absolute;
+    /*z-index: -2;*/
+    margin-top:30px;
+    margin-left: 30px;
+    transform: rotate(10deg);
+}
+
+#couchPic {
+    width: 400px;
+    position: absolute;
+    /*z-index: -2;*/
+    margin-top: 300px;
+    margin-left: 30px;
+    transform: rotate(-10deg);
+}
+
+#logoPic{
+    width: 400px;
+    position: absolute;
+    /*z-index: -2;*/
+    margin-left: 1120px;
+    /*margin-top: 20px;*/
+    transform: rotate(-5deg);
+}
+
+#MonTurkeyPic {
+    width: 400px;
+    position: absolute;
+    /*z-index: -2;*/
+    margin-left: 1120px;
+    margin-top: 300px;
+    transform: rotate(20deg);
+    
+}
+
+#yellowFrame {
+    margin-top: -30px;
+}
+
+
 
