@@ -53,15 +53,6 @@ var questions= [
 ];
 
 
-//checking nested objects in array  
-//var count =0;
-//console.log(questions[0].question);
-//console.log(questions[0].answer);
-//console.log(questions[0].choices)
-//console.log(questions.length);
-
-
-
 //variable for correct, incorrect, unaswered, and user's guess 
 var userCorrect=0; 
 var userIncorrect=0;
@@ -74,8 +65,7 @@ var intervalId;
 var timerOn=false;
 var count=0;
 
-
-//Functions: 
+ 
 
 //function to start game
 function startGame() {
@@ -120,12 +110,9 @@ function runTimer () {
 function userAnswers() {
   $("span").unbind("click").on("click", function (){ //had to unbind click event was making answers increment per question
     userGuess=$(this).children().val();
-    //console.log(userGuess);
-    //console.log("clicked!");
 
     var triviaAnswer= questions[count].answer;
-   // console.log(triviaAnswer); 
-
+   
 //if answered correctly,show a msg of correct, after a few secs, go on the next page automatically 
   if (userGuess === triviaAnswer) {
     userCorrect++;
@@ -151,8 +138,6 @@ function userAnswers() {
     clearTimer(); 
     setTimeout(nextQuestion,4000);
   }
-  //console.log(userCorrect);
-  //console.log(userIncorrect);
 });
 }
 
@@ -193,9 +178,7 @@ function restart () {
     timer=30;
     setTime();
     $("#timer").html("<h1 class='timeHeader'> Time: " + timer + " seconds. </h2>");
-    //$("#friendsThemeSong")[0].currentTime=0; //obtained from Medium.com about adding audio but not working 
     $("#friendsThemeSong")[0].play(); 
-
     count=0;
     startGame(); 
   });
@@ -219,7 +202,7 @@ $(document).ready(function () {
   
     
 $("#startButton").one("click", function () {// .one for so click is not "adding" on to each other (per advice from friend)
-  //console.log("click");
+  
   //hide start button
   $("#startButton").hide();
   $("#friendsThemeSong")[0].play();

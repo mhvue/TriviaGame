@@ -1,4 +1,6 @@
 # TriviaGame
+https://mhvue.github.io/TriviaGame 
+
 Using Javascript and jQuery  to create a FRIENDS trivia game. 
 
 There is 30 seconds to answer each question. 
