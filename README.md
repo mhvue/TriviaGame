@@ -6,7 +6,7 @@
 ## How to play:
 There are a total of 8 questions. It is timed with 30 seconds to answer each question. Press start button the start the game.
 <p align="center">
-<img src="assets/images/friendsFrameStart.png" width="250px"><img src="assets/images/friendsQuesAnsLogo.png" width="250px">
+<img src="assets/images/friendsFrameStart.png" width="250px"><img src="assets/images/friendsQuesAnsLogo.png" width="270px">
 </p>
 
 **Correct answer is selected**, then an image and the "Correct" message will show.  
