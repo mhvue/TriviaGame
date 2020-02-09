@@ -6,7 +6,7 @@
 ## How to play:
 There are a total of 8 questions. It is timed with 30 seconds to answer each question. Press start button the start the game.
 <p align="center">
-<img src="assets/images/friendsFrameStart.png" width="250px"> <img src="assets/images/friendsQuesAnsLogo.png" width="290px">
+<img src="assets/images/friendsFrameStart.png" width="250px"> <img src="assets/images/friendsQuesAnsLogo.png" width="300px">
 </p>
 
 **Correct answer is selected**, then an image and the "Correct" message will show.  
@@ -14,7 +14,7 @@ There are a total of 8 questions. It is timed with 30 seconds to answer each que
 **If timer goes to 0**, then a message of, "Time's up" will show. It'll also show the image and correct answer.    
 
 At the end, it will show how many questions were correct, incorrect, and missed. It'll give an option to press Start button again to play another round. 
-<p align="center"><img src="assets/images/friendsResults.png"></p>
+<p align="center"><img src="assets/images/friendsResults.png" width="300px"></p>
 
 Try it out: https://mhvue.github.io/TriviaGame  
 
