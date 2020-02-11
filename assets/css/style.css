@@ -271,46 +271,24 @@ input:hover {
 
 }
 
-
-@media screen and (max-width: 640px) {
+/* still needs more work on answer text and answer images for 640px */
+@media screen and (max-width: 640px) { 
     #button-div {
         position: relative;
         right: 150px;
     }
 
 
-    #yellowFrame {
+    /* #yellowFrame {
         width: 300px;
+    } */
+    
+    #endPic, #couchPic,#logoPic, #MonTurkeyPic {
+        visibility: hidden; 
+
     }
     
-    #endPic{
-        width: 25%;
-        left: 0px;
-        top: 250px;
-        transform: none;
-    }
-    
-    #couchPic {
-        width: 25%;
-        top: 400px;
-        left: 5px;
-        transform: none;
-    }
-    
-    
-    #logoPic{
-        width: 25%;
-        left: 490px;
-        transform: none;
-    }
-    
-    
-    #MonTurkeyPic {
-        width: 25%;
-        left:490px;
-        top: 400px;
-        transform: none;
-    }
+   
     
     #timer, #question, #choices-container {
         padding: 5px;
@@ -331,18 +309,14 @@ input:hover {
     }
 
     .answerImg{
-        width: 250px;;
+        width: 300px;
     }
 
-    .answerHeader {
-        font-size: 18px;
-        top: 280px;
-    }
-    
+     
     
     #endText {
         font-size: 20px;
         margin-top: 60px;
-    }
+    } 
 
 }
