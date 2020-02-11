@@ -186,8 +186,9 @@ input:hover {
     margin-top: -30px;
 }
 
-/*Media Queries - only got 980px and didn't get a chance to do 768px and 640px*/ 
+/*Media Queries - only got 980px and some of 640px*/ 
 
+/* still need to fix when timer is up and answer show positioning */
 @media screen and (max-width: 980px) {
     body{
         width: 100%;
