@@ -271,3 +271,78 @@ input:hover {
 
 }
 
+
+@media screen and (max-width: 640px) {
+    #button-div {
+        position: relative;
+        right: 150px;
+    }
+
+
+    #yellowFrame {
+        width: 300px;
+    }
+    
+    #endPic{
+        width: 25%;
+        left: 0px;
+        top: 250px;
+        transform: none;
+    }
+    
+    #couchPic {
+        width: 25%;
+        top: 400px;
+        left: 5px;
+        transform: none;
+    }
+    
+    
+    #logoPic{
+        width: 25%;
+        left: 490px;
+        transform: none;
+    }
+    
+    
+    #MonTurkeyPic {
+        width: 25%;
+        left:490px;
+        top: 400px;
+        transform: none;
+    }
+    
+    #timer, #question, #choices-container {
+        padding: 5px;
+        width: 300px;
+        margin: 0 auto;
+        font-size: 10px;
+    }
+
+    input{
+        width: 180px;
+        padding: 5px;
+        font-size: 15px;
+    }
+
+    input:hover {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .answerImg{
+        width: 250px;;
+    }
+
+    .answerHeader {
+        font-size: 18px;
+        top: 280px;
+    }
+    
+    
+    #endText {
+        font-size: 20px;
+        margin-top: 60px;
+    }
+
+}
