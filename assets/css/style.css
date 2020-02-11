@@ -54,7 +54,6 @@ button{
 }
 
 #startButton:hover {
-    /*background-color: #8458a7;*/
     font-size: 20px;
 }
 
@@ -209,31 +208,26 @@ input:hover {
 
     #endPic{
         width: 25%;
-        /* z-index: -2; */
         left: 20px;
         top: 250px;
     }
     
     #couchPic {
         width: 25%;
-        /* z-index: -2; */
         top: 460px;
         left: 5px;
     }
     
     #logoPic{
         width: 25%;
-        /* z-index: -2; */
-
         left: 710px;
         top: 250px;
     }
     
     #MonTurkeyPic {
         width: 25%;
-        /* z-index: -2; */
-       left:720px;
-       top: 480px;
+        left:720px;
+        top: 480px;
     }
 
     #endText {
@@ -248,20 +242,21 @@ input:hover {
         margin: 0 auto;
     }
     
-    #timer, #question {
-        margin: 0 auto;
-    }
-    
     #choices-container {
         top: 130px;
         margin: 0 auto;
     }
 
     input{
-        width: 150px;
+        width: 180px;
         padding: 5px;
-        font-size: 15px;
+        font-size: 18px;
     }
+
+    input:hover {
+        font-size: 20px;
+    }
+      
 
     
     #timeUpImg {
